@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"EMA-Trading-go/global"
 	"EMA-Trading-go/okx"
 )
 
@@ -20,6 +21,10 @@ func GetCandle() {
 }
 
 func main() {
-	// 获取最近
-	GetCandle()
+	// 初始化全局参数
+	global.Start()
+
+	// GetCandle()
+
+	global.Log.Println("打印日志")
 }
