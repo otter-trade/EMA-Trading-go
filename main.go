@@ -5,6 +5,7 @@ import (
 
 	"EMA-Trading-go/global"
 	"EMA-Trading-go/okx"
+	"EMA-Trading-go/trade"
 )
 
 func GetCandle() {
@@ -23,8 +24,11 @@ func GetCandle() {
 func main() {
 	// 初始化全局参数
 	global.Start()
+	global.Log.Println("系统启动.....")
 
-	// GetCandle()
+	// 新建一个策略
+	tradeObj := trade.New()
 
-	global.Log.Println("打印日志")
+	// 填充基础数据
+	tradeObj.FillBaseCandle()
 }

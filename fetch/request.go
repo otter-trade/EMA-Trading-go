@@ -25,11 +25,12 @@ package fetch
 */
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"EMA-Trading-go/global"
 )
 
 type Opt struct {
@@ -70,8 +71,6 @@ func Get(opt Opt) ([]byte, error) {
 
 	params := url.Values{}
 
-	fmt.Println(parseURL)
-
 	for k, v := range opt.Data {
 		params.Set(k, ToStr(v))
 	}
@@ -79,7 +78,7 @@ func Get(opt Opt) ([]byte, error) {
 	parseURL.RawQuery = params.Encode()
 	targetUrl := parseURL.String()
 
-	fmt.Println("targetUrl", targetUrl)
+	global.Log.Println("发出请求: ", targetUrl)
 
 	// 创建请求
 	req, err := http.NewRequest("GET", targetUrl, nil)
