@@ -18,7 +18,7 @@ func main() {
 
 	res, err := fetch.Post(fetch.Opt{
 		Origin: "http://test-api.ottertrade.com",
-		Path:   "/market/candles",
+		Path:   "/market/candles?abc=123",
 		Data:   data,
 	})
 	if err != nil {

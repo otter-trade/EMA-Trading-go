@@ -28,6 +28,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -38,19 +39,16 @@ type Opt struct {
 }
 
 func Post(opt Opt) ([]byte, error) {
-	// 地址拼接
-	targetUrl := opt.Origin + opt.Path
-
 	// 请求参数转换
+	targetUrl := opt.Origin + opt.Path
 	dataStr := MapToJson(opt.Data)
 	payload := strings.NewReader(dataStr)
 
 	// 创建请求
-	fmt.Println("targetUrl", targetUrl)
-
-	req, _ := http.NewRequest("POST", targetUrl, payload)
-
-	// json 格式
+	req, err := http.NewRequest("POST", targetUrl, payload)
+	if err != nil {
+		return nil, err
+	}
 	req.Header.Add("Content-Type", "application/json; charset=UTF-8")
 
 	response, err := http.DefaultClient.Do(req)
@@ -59,6 +57,44 @@ func Post(opt Opt) ([]byte, error) {
 	}
 	defer response.Body.Close()
 
+	// 解析返回结果
+	body, _ := io.ReadAll(response.Body)
+	return body, nil
+}
+
+func Get(opt Opt) ([]byte, error) {
+	parseURL, err := url.Parse(opt.Origin + opt.Path)
+	if err != nil {
+		return nil, err
+	}
+
+	params := url.Values{}
+
+	fmt.Println(parseURL)
+
+	for k, v := range opt.Data {
+		params.Set(k, ToStr(v))
+	}
+	// 如果参数中有中文参数,这个方法会进行URLEncode
+	parseURL.RawQuery = params.Encode()
+	targetUrl := parseURL.String()
+
+	fmt.Println("targetUrl", targetUrl)
+
+	// 创建请求
+	req, err := http.NewRequest("GET", targetUrl, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Add("Content-Type", "application/json; charset=UTF-8")
+
+	response, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer response.Body.Close()
+
+	// 解析返回结果
 	body, _ := io.ReadAll(response.Body)
 	return body, nil
 }
