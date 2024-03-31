@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"EMA-Trading-go/global"
-	"EMA-Trading-go/mCount"
 	"EMA-Trading-go/okx"
 	"EMA-Trading-go/trade"
 
@@ -34,13 +32,21 @@ func main() {
 	tradeObj := trade.New()
 	// 填充基础数据
 	tradeObj.FillBaseCandle()
-	// 定时填充最新的数据
+
+	// 定时任务走起
+	Running(tradeObj)
 	go mClock.New(mClock.OptType{
 		Func: func() {
-			RoundNum := mCount.GetRound(0, 40) // 构建请求延迟 顶多40秒延迟
-			time.Sleep(time.Second * time.Duration(RoundNum))
-			tradeObj.SetNowCandle()
+			Running(tradeObj)
 		},
 		Spec: "1 1,6,11,16,21,26,31,36,41,46,51,56 * * * ? ", // 每隔5分钟比标准时间晚一分钟 过 1 秒执行一次
 	})
+
+	fmt.Println("当前服务正在执行中.......")
+	select {}
+}
+
+func Running(tradeObj *trade.TradeObj) {
+	// 填充当前的最新数据
+	tradeObj.SetNowCandle()
 }

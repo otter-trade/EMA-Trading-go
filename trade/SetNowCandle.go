@@ -1,8 +1,6 @@
 package trade
 
 import (
-	"fmt"
-
 	"EMA-Trading-go/global"
 	"EMA-Trading-go/mJson"
 	"EMA-Trading-go/mStr"
@@ -53,12 +51,11 @@ func (_this *TradeObj) SetNowCandle() {
 		preItem := _this.NowCandle[preIndex]
 		nowItem := _this.NowCandle[key]
 		if key > 0 {
-			fmt.Println(key, nowItem.TimeUnix-preItem.TimeUnix, nowItem.TimeStr)
 			if nowItem.TimeUnix-preItem.TimeUnix != mTime.UnixTimeInt64.Hour {
 				global.Log.Println("数据检查出错, ", key, mJson.Format(nowItem))
 				break
 			}
 		}
 	}
-	global.Log.Println("最新数据塞入完毕,当前共", len(_this.NowCandle), "条,最后的时间为", _this.NowCandle[_this.CandleMaxLen-1].TimeStr)
+	global.Log.Println("最新数据塞入完毕,当前共", len(_this.NowCandle), "条,最后的时间为", _this.NowCandle[_this.CandleMaxLen-1].TimeStr, _this.NowCandle[_this.CandleMaxLen-1].C)
 }
