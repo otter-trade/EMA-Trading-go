@@ -20,3 +20,14 @@ func New() *TradeObj {
 
 	return &obj
 }
+
+func (_this *TradeObj) Running() {
+	// 填充当前的最新数据
+	_this.SetNowCandle()
+
+	// 计算所需指标
+	_this.CountIndex()
+
+	// 开始整理 K 线
+	_this.FormatCandle()
+}

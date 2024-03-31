@@ -34,19 +34,15 @@ func main() {
 	tradeObj.FillBaseCandle()
 
 	// 定时任务走起
-	Running(tradeObj)
+
+	tradeObj.Running()
 	go mClock.New(mClock.OptType{
 		Func: func() {
-			Running(tradeObj)
+			tradeObj.Running()
 		},
 		Spec: "1 1,6,11,16,21,26,31,36,41,46,51,56 * * * ? ", // 每隔5分钟比标准时间晚一分钟 过 1 秒执行一次
 	})
 
 	fmt.Println("当前服务正在执行中.......")
 	select {}
-}
-
-func Running(tradeObj *trade.TradeObj) {
-	// 填充当前的最新数据
-	tradeObj.SetNowCandle()
 }
