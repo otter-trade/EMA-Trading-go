@@ -6,7 +6,7 @@ import (
 	"EMA-Trading-go/okx"
 )
 
-func main() {
+func GetCandle() {
 	resData, err := okx.GetOKXCandle(okx.GetCandleOpt{
 		InstID: "BTC-USDT",
 		Bar:    "1H",
@@ -14,6 +14,12 @@ func main() {
 	if err != nil {
 		fmt.Println("出现错误", err)
 	}
+	for k, v := range resData {
+		fmt.Println(k, v)
+	}
+}
 
-	fmt.Println("结果", resData)
+func main() {
+	// 获取最近
+	GetCandle()
 }
