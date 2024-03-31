@@ -2,6 +2,7 @@ package trade
 
 import (
 	"EMA-Trading-go/global"
+	"EMA-Trading-go/mJson"
 	"EMA-Trading-go/okx"
 
 	"EMA-Trading-go/mTalib"
@@ -34,6 +35,8 @@ func (_this *TradeObj) FormatCandle() {
 		}
 
 		nowTradeCandleList = append(nowTradeCandleList, newDataObj)
+
+		global.NowCnaLog.Println("NowKdata:", mJson.Format(newDataObj))
 	}
 
 	offsetTradeCandleList := []TradeCandle{}
@@ -48,6 +51,7 @@ func (_this *TradeObj) FormatCandle() {
 			EMA100: EMA100,
 		}
 		offsetTradeCandleList = append(offsetTradeCandleList, newDataObj)
+		global.Log.Println("offsetKdata:", mJson.Format(newDataObj))
 	}
 
 	nowEma := nowTradeCandleList[len(nowTradeCandleList)-1].EMA100
@@ -55,11 +59,11 @@ func (_this *TradeObj) FormatCandle() {
 
 	Dir := 0
 	if nowEma > offsetEma {
-		Dir = -1
-	}
-	if nowEma > offsetEma {
-		// 上涨趋势
 		Dir = 1
+	}
+	if nowEma < offsetEma {
+		// 上涨趋势
+		Dir = -1
 	}
 
 	global.Log.Println("当前信号指标为:", Dir)
