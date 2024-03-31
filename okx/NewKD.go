@@ -1,7 +1,7 @@
 package okx
 
 import (
-	"github.com/EasyGolang/goTools/mCount"
+	"EMA-Trading-go/mCount"
 )
 
 // 构造新的 Kdata

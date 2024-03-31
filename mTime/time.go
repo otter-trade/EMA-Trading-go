@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/EasyGolang/goTools/mCount"
-	"github.com/EasyGolang/goTools/mStr"
+	"EMA-Trading-go/mCount"
+	"EMA-Trading-go/mStr"
 )
 
 /*
