@@ -31,4 +31,6 @@ func main() {
 
 	// 填充基础数据
 	tradeObj.FillBaseCandle()
+	// 填充最新的数据
+	tradeObj.SetNowCandle()
 }

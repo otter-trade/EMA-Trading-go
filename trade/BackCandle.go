@@ -1,10 +1,7 @@
 package trade
 
 import (
-	"fmt"
-
 	"EMA-Trading-go/global"
-	"EMA-Trading-go/mJson"
 	"EMA-Trading-go/mStr"
 	"EMA-Trading-go/mTime"
 	"EMA-Trading-go/okx"
@@ -31,21 +28,21 @@ func (_this *TradeObj) FillBaseCandle() {
 	}
 
 	// 检查基础数据
-	for key := range baseCandle {
-		preIndex := key - 1
-		if preIndex < 0 {
-			preIndex = 0
-		}
-		preItem := baseCandle[preIndex]
-		nowItem := baseCandle[key]
-		if key > 0 {
-			fmt.Println(key, nowItem.TimeUnix-preItem.TimeUnix, nowItem.TimeStr)
-			if nowItem.TimeUnix-preItem.TimeUnix != mTime.UnixTimeInt64.Hour {
-				global.Log.Println("数据检查出错, ", key, mJson.Format(nowItem))
-				break
-			}
-		}
-	}
+	// for key := range baseCandle {
+	// 	preIndex := key - 1
+	// 	if preIndex < 0 {
+	// 		preIndex = 0
+	// 	}
+	// 	preItem := baseCandle[preIndex]
+	// 	nowItem := baseCandle[key]
+	// 	if key > 0 {
+	// 		fmt.Println(key, nowItem.TimeUnix-preItem.TimeUnix, nowItem.TimeStr)
+	// 		if nowItem.TimeUnix-preItem.TimeUnix != mTime.UnixTimeInt64.Hour {
+	// 			global.Log.Println("数据检查出错, ", key, mJson.Format(nowItem))
+	// 			break
+	// 		}
+	// 	}
+	// }
 
 	_this.NowCandle = baseCandle
 }
