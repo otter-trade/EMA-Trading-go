@@ -2,28 +2,18 @@ package main
 
 import (
 	"fmt"
-	"time"
 
-	"EMA-Trading-go/fetch"
+	"EMA-Trading-go/okx"
 )
 
 func main() {
-	now := time.Now()
-	data := map[string]any{
-		"instId": "BTC-USDT",
-		"bar":    "1min",
-		"before": now.Unix(),
-		"limit":  20,
-	}
-
-	res, err := fetch.Post(fetch.Opt{
-		Origin: "http://test-api.ottertrade.com",
-		Path:   "/market/candles?abc=123",
-		Data:   data,
+	resData, err := okx.GetOKXCandle(okx.GetCandleOpt{
+		InstID: "BTC-USDT",
+		Bar:    "1H",
 	})
 	if err != nil {
-		fmt.Println("请求发生错误", err)
+		fmt.Println("出现错误", err)
 	}
 
-	fmt.Println("请求结果", string(res))
+	fmt.Println("结果", resData)
 }
