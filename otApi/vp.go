@@ -18,8 +18,8 @@ var (
 func Test() {
 	// InitPosition()
 	// ReadPosition()
-	// UpoDatePosition()
-	MarketCandles()
+	UpoDatePosition()
+	// MarketCandles()
 }
 
 // 第一步：初始化虚拟持仓
