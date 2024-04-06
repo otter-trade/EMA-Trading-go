@@ -1,0 +1,17 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "data": {
+    "Status": 200,
+    "Message": "common.success",
+    "Position": {
+      "StrategyID": "mo7_EMA_Test",
+      "RunType": 3,
+      "InstanceID": "backtest_mo7_local_Test1",
+      "InitialAsset": 1000,
+      "FeeRate": 0.5,
+      "Cash": 1000,
+      "CurrPosition": null
+    }
+  }
+}
