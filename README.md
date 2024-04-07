@@ -42,3 +42,22 @@ if (Dir != preDir) {
 }
 
 ```
+
+```bash
+
+curl --location --request POST 'http://localhost:8802/open-api/market/candles' \
+--header 'User-Agent: Apifox/1.0.0 (https://apifox.com)' \
+--header 'Content-Type: application/json' \
+--header 'Accept: */*' \
+--header 'Host: test-api.ottertrade.com' \
+--header 'Connection: keep-alive' \
+--data-raw '{
+  "instId":"BTC-USDT",
+  "bar":"1min",
+  "before":1712404848,
+  "limit":20
+}'
+
+
+
+```
