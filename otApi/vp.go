@@ -17,7 +17,7 @@ var (
 
 func Test() {
 	// InitPosition()
-	ReadPosition()
+	// ReadPosition()
 	// UpoDatePosition()
 	// MarketCandles()
 }
@@ -26,7 +26,7 @@ func Test() {
 func InitPosition() {
 	data := map[string]any{
 		"StrategyID":   StrategyID, // 策略ID 每个策略唯一，当前用户的当前策略
-		"RunType":      RunType,    // 运行类型 1：线上类型 2：预览类型 3：回测类型
+		"RunType":      RunType,    // 运行类型 1：线上类型(生茶令牌) 2：预览类型(社区令牌) 3：回测类型(测试令牌)
 		"BackTestID":   BackTestID, // 自定义ID 最好是用户本地生成的 UUID 或者时间戳 ,如果该ID变更，则本次虚拟账户状态重置
 		"InitialAsset": 1000,       // 初始资产  10000
 		"FeeRate":      0.5,        // 手续费率 0.5
