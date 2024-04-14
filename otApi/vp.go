@@ -17,8 +17,8 @@ var (
 
 func Test() {
 	// InitPosition()
-	// ReadPosition()
-	UpoDatePosition()
+	ReadPosition()
+	// UpoDatePosition()
 	// MarketCandles()
 }
 

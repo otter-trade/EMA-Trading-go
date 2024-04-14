@@ -10,8 +10,22 @@
       "InstanceID": "backtest_mo7_local_Test1",
       "InitialAsset": 1000,
       "FeeRate": 0.5,
-      "Cash": 1000,
-      "CurrPosition": null
+      "Cash": 200,
+      "CurrPosition": [
+        {
+          "InstID": "BTC-USDT",
+          "InstType": "FUTURES",
+          "Leverage": 10,
+          "Side": -1,
+          "Type": 1,
+          "Proportion": 0.8,
+          "Last": "64069.3",
+          "Volume": "0.008331940337058234",
+          "AvgPx": "96016.04999999999",
+          "Margin": "864144.45",
+          "ForcedClosedOut": true
+        }
+      ]
     }
   }
 }
