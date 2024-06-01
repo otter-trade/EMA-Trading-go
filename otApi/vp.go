@@ -81,14 +81,13 @@ func UpDatePosition() {
 		"Timestamp":  0, // 为 0 则为当前时间 , 如果是 2021年5月22日 13:40:00  下单 ，  RunType = 2 & 3 的时候用户的这个值忽略，使用系统当前时间
 		"NewPosition": PositionType{
 			{
-				"InstID": "BTC-USDT",
-				// -1 开空  0 空仓  1 开多  & 如果 type 为1 则 -1 和 0 都默认为平仓 1 则为买入
-				"Side":       -1,
-				"Type":       1,         //  1：合约 0：现货
-				"InstType":   "FUTURES", // 只有在 Type 为 1 的时候才生效 默认为永续合约
-				"Leverage":   10,        // 只有在 Type 为 1 的时候才生效 且为必填
-				"Proportion": 0.8,       // 必填，默认传 1 为当前账户的全部资金 ， 0.5 则为半仓开仓
-				"Last":       "string",  // -- 只有在 RunType 为 3 且 Timestamp 不为 0  的时候使用用户自己传递的价格。   RunType = 2 & 3 的时候用户的这个值忽略，使用系统当前时间当前币种的当前价格
+				"InstID":     "BTC-USDT", // -1 开空  0 空仓  1 开多  & 如果 type 为1 则 -1 和 0 都默认为平仓 1 则为买入
+				"Side":       -1,         // -1,  0 , 1
+				"Type":       1,          //  1：合约 0：现货
+				"InstType":   "FUTURES",  // 只有在 Type 为 1 的时候才生效 默认为永续合约
+				"Leverage":   10,         // 只有在 Type 为 1 的时候才生效 且为必填
+				"Proportion": 0.8,        // 必填，默认传 1 为当前账户的全部资金 ， 0.5 则为半仓开仓
+				"Last":       "string",   // -- 只有在 RunType 为 3 且 Timestamp 不为 0  的时候使用用户自己传递的价格。   RunType = 2 & 3 的时候用户的这个值忽略，使用系统当前时间当前币种的当前价格
 				// "Volume":     "string",
 				// "AvgPx":      "string",
 			},
