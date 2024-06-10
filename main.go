@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"EMA-Trading-go/otApi"
 )
 
 var OtterTradeKey = "xxxxxx" // 发布时 替换为  生产令牌 或者 社区令牌
@@ -33,7 +35,7 @@ func Start() {
 
 	// 定义均线窗口大小
 	shortWindow := 20
-	longWindow := 50
+	// longWindow := 50
 
 	// 初始化变量
 	var shortSMA, longSMA float64
@@ -50,10 +52,10 @@ func Start() {
 
 		if i >= shortWindow {
 			// 计算短期均线
-			shortSMA = simpleMovingAverage(closePrice, shortWindow, rows[i-shortWindow:i])
+			// shortSMA = simpleMovingAverage(closePrice, shortWindow, rows[i-shortWindow:i])
 
 			// 计算长期均线
-			longSMA = simpleMovingAverage(closePrice, longWindow, rows[i-longWindow:i])
+			// longSMA = simpleMovingAverage(closePrice, longWindow, rows[i-longWindow:i])
 
 			// 生成交易信号
 			if shortSMA > longSMA {
@@ -83,7 +85,9 @@ func main() {
 
 
 	*/
-	Start()
+	// Start()
+
+	otApi.StartOpenApi()
 }
 
 // 计算简单移动平均值

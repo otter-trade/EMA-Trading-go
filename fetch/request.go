@@ -36,6 +36,7 @@ import (
 type Opt struct {
 	Origin string
 	Path   string
+	Header map[string]string
 	Data   map[string]any
 }
 
@@ -51,6 +52,10 @@ func Post(opt Opt) ([]byte, error) {
 		return nil, err
 	}
 	req.Header.Add("Content-Type", "application/json; charset=UTF-8")
+
+	for k, v := range opt.Header {
+		req.Header.Add(k, v)
+	}
 
 	response, err := http.DefaultClient.Do(req)
 	if err != nil {
