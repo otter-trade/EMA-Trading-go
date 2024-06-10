@@ -7,8 +7,6 @@ import (
 	"EMA-Trading-go/fetch"
 )
 
-var BaseUrl = "http://test-api.ottertrade.com"
-
 var (
 	StrategyID = "mo7_EMA_Test" // 创建策略的时候
 	// BackTestID = "EMA_30_MA_60"

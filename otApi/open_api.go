@@ -54,12 +54,12 @@ func GetHeaderACCESS(path string, body string) map[string]string {
 	)
 	fmt.Println("SignStr", SignStr)
 
-	Sign := HmacSha256("e9ef03e8-d611-431b-8227-b8f15fa07af0", SignStr)
+	Sign := HmacSha256(OtStrategyToken, SignStr)
 
 	fmt.Println("Sign", Sign)
 
 	OpenApiHeader := map[string]string{
-		"OT-ACCESS-KEY":       "mJsp2X90ltkBNENFh799resyud3UqhovjY5iUgpKWLBMRSNMohWjrvt9kWQanAb5",
+		"OT-ACCESS-KEY":       OtAPIKey,
 		"OT-ACCESS-SIGN":      Sign,
 		"OT-ACCESS-TIMESTAMP": timeUnix, // 2006-01-02T15:04:05Z07:00
 	}
