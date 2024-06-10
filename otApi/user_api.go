@@ -7,7 +7,7 @@ import (
 )
 
 var Header = map[string]string{
-	"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjY3MDE4ODMwN0BxcS5jb20iLCJleHAiOjE3MTgwMDgxMDYsImlhdCI6MTcxNzkyMTcwNiwidXNlcklkIjoxfQ.IloKF7HgIXSOWO9QV8KKJcwh9uMqEGUYnCSExLJ-xH8",
+	"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjY3MDE4ODMwN0BxcS5jb20iLCJleHAiOjE3MTgxMDk3NTAsImlhdCI6MTcxODAyMzM1MCwidXNlcklkIjoxfQ.qEGs1L9Pi0nUoylCjfKCZfgX8097KkUGY0VItVHgEUE",
 }
 
 // var strategyID = "5cb44aa4-1041-4601-8c32-3d98b131e4ba"
