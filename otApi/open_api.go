@@ -43,13 +43,14 @@ func HmacSha256(key string, data string) string {
 }
 
 func GetHeaderACCESS(path string, body string) map[string]string {
-	timeUnix := time.Now().Unix()
-	timeUnixStr := mStr.ToStr(timeUnix * 1000)
+	timeUnix := time.Now().Format(time.RFC3339)
+
+	fmt.Println("timeUnix", timeUnix)
 
 	SignStr := mStr.Join(
-		timeUnixStr, // 开发者本地的时间戳，发起请求生成的
-		path,        //  开发着请求哪个接口，他就得在这里写什么地址
-		body,        // 他发出请求时的参数字符串
+		timeUnix, // 开发者本地的时间戳，发起请求生成的
+		path,     //  开发着请求哪个接口，他就得在这里写什么地址
+		body,     // 他发出请求时的参数字符串
 	)
 
 	Sign := HmacSha256(SignStr, "e9ef03e8-d611-431b-8227-b8f15fa07af0")
@@ -59,7 +60,7 @@ func GetHeaderACCESS(path string, body string) map[string]string {
 	OpenApiHeader := map[string]string{
 		"OT-ACCESS-KEY":       "mJsp2X90ltkBNENFh799resyud3UqhovjY5iUgpKWLBMRSNMohWjrvt9kWQanAb5",
 		"OT-ACCESS-SIGN":      Sign,
-		"OT-ACCESS-TIMESTAMP": timeUnixStr,
+		"OT-ACCESS-TIMESTAMP": timeUnix, // 2006-01-02T15:04:05Z07:00
 	}
 	return OpenApiHeader
 }
