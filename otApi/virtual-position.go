@@ -17,7 +17,7 @@ var (
 	RunType = 3
 )
 
-func Test() {
+func StartVPServe() {
 	// InitPosition()
 	// ReadPosition()
 	// UpoDatePosition()
