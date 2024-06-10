@@ -1,16 +1,65 @@
 package otApi
 
 import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/base64"
 	"fmt"
+	"time"
 
 	"EMA-Trading-go/fetch"
+	"EMA-Trading-go/mJson"
+	"EMA-Trading-go/mStr"
 )
 
-func GetHeaderACCESS() map[string]string {
+/*
+
+apiKey
+:
+"mJsp2X90ltkBNENFh799resyud3UqhovjY5iUgpKWLBMRSNMohWjrvt9kWQanAb5"
+content
+:
+"e9ef03e8-d611-431b-8227-b8f15fa07af0"
+
+
+SignStr := mStr.Join(
+    Timestamp,   // 开发者本地的时间戳，发起请求生成的
+    strings.ToUpper("get"), //开发者用什么类型的请求，他就写什么，不过我们只有 POST ， 可省略
+    Path, //  开发着请求哪个接口，他就得在这里写什么地址
+    Body, // 他发出请求时的参数字符串
+  )
+
+*/
+
+func HmacSha256(key string, data string) string {
+	mac := hmac.New(sha256.New, []byte(key))
+	_, _ = mac.Write([]byte(data))
+
+	hex := mac.Sum(nil)
+
+	str := base64.URLEncoding.EncodeToString(hex)
+
+	return str
+}
+
+func GetHeaderACCESS(path string, body string) map[string]string {
+	timeUnix := time.Now().Unix()
+	timeUnixStr := mStr.ToStr(timeUnix * 1000)
+
+	SignStr := mStr.Join(
+		timeUnixStr, // 开发者本地的时间戳，发起请求生成的
+		path,        //  开发着请求哪个接口，他就得在这里写什么地址
+		body,        // 他发出请求时的参数字符串
+	)
+
+	Sign := HmacSha256(SignStr, "e9ef03e8-d611-431b-8227-b8f15fa07af0")
+
+	fmt.Println("Sign", Sign)
+
 	OpenApiHeader := map[string]string{
-		"OT-ACCESS-KEY":       "1",
-		"OT-ACCESS-SIGN":      "2",
-		"OT-ACCESS-TIMESTAMP": "3",
+		"OT-ACCESS-KEY":       "mJsp2X90ltkBNENFh799resyud3UqhovjY5iUgpKWLBMRSNMohWjrvt9kWQanAb5",
+		"OT-ACCESS-SIGN":      Sign,
+		"OT-ACCESS-TIMESTAMP": timeUnixStr,
 	}
 	return OpenApiHeader
 }
@@ -27,10 +76,11 @@ func InitPosition() {
 		// "InitialAsset": "10000",          // 初始资产 默认 10000
 	}
 
+	path := "/openapi/position/init"
 	res, err := fetch.Post(fetch.Opt{
 		Origin: BaseUrl,
 		Path:   "/openapi/position/init",
-		Header: GetHeaderACCESS(),
+		Header: GetHeaderACCESS(path, mJson.ToStr(data)),
 		Data:   data,
 	})
 	if err != nil {
