@@ -52,8 +52,9 @@ func GetHeaderACCESS(path string, body string) map[string]string {
 		path,     //  开发着请求哪个接口，他就得在这里写什么地址
 		body,     // 他发出请求时的参数字符串
 	)
+	fmt.Println("SignStr", SignStr)
 
-	Sign := HmacSha256(SignStr, "e9ef03e8-d611-431b-8227-b8f15fa07af0")
+	Sign := HmacSha256("e9ef03e8-d611-431b-8227-b8f15fa07af0", SignStr)
 
 	fmt.Println("Sign", Sign)
 
@@ -73,8 +74,8 @@ func StartOpenApi() {
 // 初始化持仓
 func InitPosition() {
 	data := map[string]any{
-		"MockName": "mo7_test_first", // 策略ID 每个策略唯一，当前用户的当前策略
-		// "InitialAsset": "10000",          // 初始资产 默认 10000
+		"MockName":     "mo7_test_first", // 策略ID 每个策略唯一，当前用户的当前策略
+		"InitialAsset": "10000",          // 初始资产 默认 10000
 	}
 
 	path := "/openapi/position/init"
