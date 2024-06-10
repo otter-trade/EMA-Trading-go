@@ -37,9 +37,9 @@ func HmacSha256(key string, data string) string {
 
 	hex := mac.Sum(nil)
 
-	str := base64.URLEncoding.EncodeToString(hex)
+	hexStr := base64.URLEncoding.EncodeToString(hex)
 
-	return str
+	return hexStr
 }
 
 func GetHeaderACCESS(path string, body string) map[string]string {
