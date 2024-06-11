@@ -2,30 +2,30 @@
   "code": 200,
   "msg": "成功",
   "data": {
-    "Status": 200,
-    "Message": "common.success",
     "Position": {
-      "StrategyID": "mo7_EMA_Test",
-      "RunType": 3,
-      "InstanceID": "backtest_mo7_local_Test1",
-      "InitialAsset": 1000,
-      "FeeRate": 0.5,
-      "Cash": 200,
+      "StrategyID": "e395ffe2-3a99-4072-abfc-0da940f32f26",
+      "RunType": 1,
+      "InstanceID": "backtest_mo7_test_first",
+      "InitialAsset": 10000,
+      "FeeRate": 0.01,
+      "Cash": 2000,
       "CurrPosition": [
         {
           "InstID": "BTC-USDT",
           "InstType": "FUTURES",
-          "Leverage": 10,
-          "Side": -1,
-          "Type": 1,
+          "Leverage": 2,
+          "Side": 1,
+          "Type": 2,
           "Proportion": 0.8,
-          "Last": "64069.3",
-          "Volume": "0.008331940337058234",
-          "AvgPx": "96016.04999999999",
-          "Margin": "864144.45",
+          "Last": "69336.9",
+          "Volume": "0.1142827968091729",
+          "AvgPx": "70001.787",
+          "Margin": "70001.787",
           "ForcedClosedOut": true
         }
-      ]
+      ],
+      "TimetampNs": 1718108999434701800,
+      "InitTimetampNs": 1718108206624818400
     }
   }
 }

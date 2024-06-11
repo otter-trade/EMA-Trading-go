@@ -2,16 +2,31 @@
   "code": 200,
   "msg": "成功",
   "data": {
-    "Status": 200,
-    "Message": "common.success",
-    "Position": {
-      "StrategyID": "mo7_EMA_Test",
-      "RunType": 3,
-      "InstanceID": "backtest_mo7_local_Test1",
-      "InitialAsset": 1000,
-      "FeeRate": 0.5,
-      "Cash": 1000,
-      "CurrPosition": null
-    }
+    "Records": [
+      {
+        "HistoryPosition": null,
+        "TimetampNs": 0,
+        "InitTimetampNs": 1718108206624818400
+      },
+      {
+        "HistoryPosition": [
+          {
+            "InstID": "BTC-USDT",
+            "InstType": "FUTURES",
+            "Leverage": 2,
+            "Side": 1,
+            "Type": 2,
+            "Proportion": 0.8,
+            "Last": "69308.7",
+            "Volume": "0.1142827968091729",
+            "AvgPx": "70001.787",
+            "Margin": "70001.787",
+            "ForcedClosedOut": true
+          }
+        ],
+        "TimetampNs": 1718108999434701800,
+        "InitTimetampNs": 1718108206624818400
+      }
+    ]
   }
 }

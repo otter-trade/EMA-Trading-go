@@ -1,5 +1,13 @@
 {
   "code": 200,
   "msg": "成功",
-  "data": { "Status": 200, "Message": "common.success" }
+  "data": {
+    "Records": [
+      {
+        "HistoryPosition": null,
+        "TimetampNs": 0,
+        "InitTimetampNs": 1718108206624818400
+      }
+    ]
+  }
 }
