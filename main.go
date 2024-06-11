@@ -86,8 +86,8 @@ func main() {
 
 	*/
 	// Start()
-	otApi.StartOpenApi()
-	// otApi.StartUserApi()
+	// otApi.StartOpenApi()
+	otApi.StartUserApi()
 }
 
 // 计算简单移动平均值
