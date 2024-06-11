@@ -8,10 +8,23 @@
       "InstanceID": "backtest_mo7_test_first",
       "InitialAsset": 10000,
       "FeeRate": 0.01,
-      "Cash": 2000,
+      "Cash": 10000,
       "CurrPosition": [
         {
           "InstID": "BTC-USDT",
+          "InstType": "FUTURES",
+          "Leverage": 2,
+          "Side": 1,
+          "Type": 2,
+          "Proportion": 0.8,
+          "Last": "69336.9",
+          "Volume": "0.1142827968091729",
+          "AvgPx": "70001.787",
+          "Margin": "70001.787",
+          "ForcedClosedOut": true
+        },
+        {
+          "InstID": "ETH-USDT",
           "InstType": "FUTURES",
           "Leverage": 2,
           "Side": 1,
