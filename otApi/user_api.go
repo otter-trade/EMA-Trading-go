@@ -14,8 +14,8 @@ var strategyID = "e395ffe2-3a99-4072-abfc-0da940f32f26"
 
 func StartUserApi() {
 	fmt.Println("StartUserApi")
-	// GetMockNameList()
-	GetHistoryStatus()
+	GetMockNameList()
+	// GetHistoryStatus()
 }
 
 // 获取 获取历史持仓列表

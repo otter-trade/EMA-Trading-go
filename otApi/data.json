@@ -4,29 +4,10 @@
   "data": {
     "Records": [
       {
-        "HistoryPosition": null,
-        "TimetampNs": 0,
-        "InitTimetampNs": 1718108206624818400
-      },
-      {
-        "HistoryPosition": [
-          {
-            "InstID": "BTC-USDT",
-            "InstType": "FUTURES",
-            "Leverage": 2,
-            "Side": 1,
-            "Type": 2,
-            "Proportion": 0.8,
-            "Last": "69308.7",
-            "Volume": "0.1142827968091729",
-            "AvgPx": "70001.787",
-            "Margin": "70001.787",
-            "ForcedClosedOut": true
-          }
-        ],
-        "TimetampNs": 1718108999434701800,
-        "InitTimetampNs": 1718108206624818400
+        "InstanceName": "e395ffe2-3a99-4072-abfc-0da940f32f26-backtest_mo7_test_first",
+        "InitTimestampMs": 0
       }
-    ]
+    ],
+    "Total": 1
   }
 }
