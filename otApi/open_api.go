@@ -119,6 +119,8 @@ func InitPosition() {
 
 下单的时候需要的信息
 
+InstList
+
 交易对(InstName):  币安标准 BTC_USDT  欧意的标准 btc-usdt   OtterTrade的标准 BTC-USDT  格式:   xxxx-USDT
 交易模式(tradeMode)： 永续合约 SWAP  现货 SPOT
 交易类型(tradeType)： 数字货币，期货，股票 或其它 目前只有数字货币
