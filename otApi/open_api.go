@@ -31,7 +31,7 @@ SignStr := mStr.Join(
 
 */
 
-var MockName = "mo7_test_first"
+var MockName = "mo7_test_2"
 
 func HmacSha256(key string, data string) string {
 	mac := hmac.New(sha256.New, []byte(key))
@@ -71,8 +71,8 @@ func GetHeaderACCESS(path string, body string) map[string]string {
 func StartOpenApi() {
 	fmt.Println("StartOpenApi")
 	// InitPosition()
-	UpdatePosition()
-	// RedPosition()
+	// UpdatePosition()
+	RedPosition()
 	// RedHistoryPosition()
 }
 
@@ -196,16 +196,16 @@ func UpdatePosition() {
 
 	// BTC 平仓
 	data := map[string]any{
-		"MockName":  MockName,   // 策略ID 每个策略唯一，当前用户的当前策略
-		"Timestamp": 1717826400, // 时间戳   2024-06-08 14:00:00
+		"MockName":    MockName,      // 策略ID 每个策略唯一，当前用户的当前策略
+		"TimestampMs": 1720072800000, // 时间戳   2024-07-04 14:00:00
 		"NewPosition": PositionType{
 			{
-				"InstID":     "BTC-USDT", // 交易产品ID
-				"InstType":   "FUTURES",  // 产品类型
-				"Leverage":   2,          // 杠杆倍数
-				"Side":       1,          // 买卖方向 1 空 2 多  &  <应该改成  -1 卖空 1 买多 0 空仓>
-				"Type":       2,          // 1:现货, 2:合约
-				"Proportion": 0,          // 持仓比例
+				"InstID":   "BTC-USDT", // 交易产品ID
+				"InstType": "FUTURES",  // 产品类型
+				"Leverage": 2,          // 杠杆倍数
+				"Side":     2,          // 买卖方向 1 空 2 多  &  <应该改成  -1 卖空 1 买多 0 空仓>
+				"Type":     2,          // 1:现货, 2:合约
+				"Volume":   "600",      // 持仓比例
 			},
 		},
 	}
@@ -268,8 +268,8 @@ CurrPosition: [
 */
 func RedPosition() {
 	data := map[string]any{
-		"MockName":  MockName,   // 策略ID 每个策略唯一，当前用户的当前策略
-		"Timestamp": 1717830000, // 时间戳   2024-06-08 15:00:00  // 这里有时间戳则应该是读取当前时间戳的仓位变化  如果时间戳为0 则读取 当下这一刻的价格计算
+		"MockName":    MockName,      // 策略ID 每个策略唯一，当前用户的当前策略
+		"TimestampMs": 1720080000000, // 时间戳 下单时间是 2024-07-04 14:00:00 读取   2024-07-04 16:00:00  // 这里有时间戳则应该是读取当前时间戳的仓位变化  如果时间戳为0 则读取 当下这一刻的价格计算
 	}
 
 	path := "/openapi/position/read"
